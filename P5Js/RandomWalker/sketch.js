@@ -3,6 +3,8 @@ let img;
 let color;
 let loc;
 
+let prevX, prevY = 0;
+
 function preload() {
   img = loadImage("orange_tree.jpg");
 }
@@ -13,7 +15,7 @@ function setup() {
   background(70);
   noStroke();
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 1; i++) {
     walker.push( new Walker(random(width), random(height)));
   }
 
@@ -21,8 +23,19 @@ function setup() {
 }
 
 function draw() {
+  if(mouseX != prevX || mouseY != prevY)
+  {
+    if(walker.length < 10)
+      walker.unshift(new Walker(mouseX, mouseY));
+    else
+      walker.pop();
+  }
+
   for(item of walker) {
     item.step();
     item.render();
   }
+
+  prevX = mouseX;
+  prevY = mouseY;
 }
