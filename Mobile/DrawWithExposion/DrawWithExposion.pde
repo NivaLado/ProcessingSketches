@@ -1,18 +1,17 @@
-import ketai.camera.*;
+ import ketai.camera.*;
 Particle[] particles;
 
 KetaiCamera cam;
 int trigger = 1;
+int rec = 0;
 
 void setup() {
     orientation(LANDSCAPE);
     imageMode(CENTER);
-    //width = displayWidth;
-    //height = displayHeight;
     cam = new KetaiCamera(this, displayWidth, displayHeight, 30);
     cam.manualSettings();
     
-   particles = new Particle [1500];
+   particles = new Particle [1100];
    for (int i = 0; i < particles.length; i++) {
      particles[i] = new Particle();
    }
@@ -34,10 +33,18 @@ void mousePressed()
 
 void draw() {
     if(cam.isStarted())
-          for (int i = 0; i < particles.length; i++) {
-            particles[i].display();
-            particles[i].move();
-          }
+    {
+      if(rec > 50)
+      {
+        for (int i = 0; i < particles.length; i++) 
+        {
+              particles[i].display();
+              particles[i].move();
+        }
+      }
+      else
+        rec++;
+    }
     else
         cam.start();
 }
