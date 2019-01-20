@@ -11,11 +11,6 @@ function setup() {
 
 function draw() {
     species();
-    x = x + spacing;
-    if (x > width) {
-        x = 0;
-        y = y + spacing;
-    }
 }
 
 function species() {
@@ -27,5 +22,11 @@ function species() {
         case 1:
             line(x, y + spacing, x + spacing, y);
             break;
+    }
+
+    x = x + spacing;
+    if (x > width) {
+        x = 0;
+        y = y + spacing;
     }
 }
