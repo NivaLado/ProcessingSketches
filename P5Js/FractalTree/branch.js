@@ -119,3 +119,5 @@ class Branch {
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
+
+// POSSIBLE FIX: DONT CREATE NEW BRANCHES UNTILL OLD ONE IS FULLY RENDERED 0_0

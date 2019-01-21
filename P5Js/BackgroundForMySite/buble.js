@@ -18,7 +18,7 @@ class Bubble {
         let color = img.get(this.x, this.y);
         fill(color);
 
-        switch (3) {
+        switch (1) {
             case 1: ellipse(this.x, this.y, this.diameter, this.diameter);
                 break;
             case 2:
@@ -48,7 +48,7 @@ class Bubble {
     }
 
     _setupSpeed() {
-        this.speed = noise(bubleCounter) * 5;
+        this.speed = bubleCounter / 100;
         //if (this.speed > -0.25 && this.speed < 0.25)
         //    this.speed = 0.25;
 
