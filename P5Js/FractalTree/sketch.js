@@ -1,11 +1,12 @@
 let tree = [];
 let counter = 0;
-let frameR = 45;
+let frameR = 60;
 let data = [];
 let specie = 1;
 let divider = 10;
 let trigger = false;
-let maxGen = 15;
+let maxGen = 14;
+let delay = 10;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
@@ -17,27 +18,28 @@ function setup() {
 	let rootStart = new createVector(width / 2, height);
 	let rootEnd = new createVector(width / 2, height - 200); //-500 (Pi/2)
 	let root = new Branch(rootStart, rootEnd, tree, 0);
+	line(rootStart.x, rootStart.y, rootEnd.x, rootEnd.y);
 	tree[0] = root;
+	tree[0].nextGen();
 }
 
 function draw() {
 	if (trigger) {
-		for (let i = tree.length - 1; i >= 0; i--) {
-			if (!tree[i].finished) {
-				tree[i].nextGen();
-			}
-		}
+		(function myLoop(i) {
+			setTimeout(function () {
+				if (!tree[i].finished) {
+					//background(75);
+					tree[i].show();
+				}
+				i--;
+				if (i >= 0) myLoop(i);
+			}, delay)
+		})(tree.length - 1);
 	}
 }
 
 function mousePressed() {
-	//background(75);
 	trigger = !trigger;
-	for (let i = tree.length - 1; i >= 0; i--) {
-		if (!tree[i].finished) {
-			tree[i].nextGen();
-		}
-	}
 }
 
 function createData() {

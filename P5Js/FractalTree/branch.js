@@ -10,11 +10,17 @@ class Branch {
 
         this.dirL;
         this.dirR;
+        //console.log(this.generation);
+        if (this.generation <= maxGen) {
+            this.generation++;
+            this.nextGen();
+        }
+
     }
 
     show() {
-        if (!this.finished) {
-            if (this.generation >= maxGen - 1)
+        //if (!this.finished) {
+            if (this.generation == maxGen + 1)
                 stroke(231, 76, 60);
             else
                 stroke(150, 210, 90);
@@ -49,12 +55,11 @@ class Branch {
                 line(this.begin.x, this.begin.y, this.end.x, this.end.y);
             }
             this.finished = true;
-        }
+        //}
     }
 
     nextGen() {
         if (this.generation <= maxGen) {
-            this.generation++;
             this.dirL = p5.Vector.sub(this.end, this.begin);
             this.dirR = p5.Vector.sub(this.end, this.begin);
 
@@ -66,7 +71,7 @@ class Branch {
             let newEndL = p5.Vector.add(this.end, this.dirL);
             let newEndR = p5.Vector.add(this.end, this.dirR);
             let lBranch; let rBranch;
-            if (this.generation > 10) {
+            if (this.generation > 8) {
                 if (random(1) > 0.5) {
                     lBranch = new Branch(this.end, newEndL, this.branches, this.generation);
                     this.branches.push(lBranch);
@@ -82,8 +87,8 @@ class Branch {
                 this.branches.push(lBranch);
             }
 
-            this.divideBranch();
-            this.show();
+            //this.divideBranch();
+            //this.show();
         }
     }
 
