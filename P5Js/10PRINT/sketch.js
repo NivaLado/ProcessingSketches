@@ -10,23 +10,31 @@ function setup() {
 }
 
 function draw() {
-    species();
+    for (let i = 0; i < 100; i++) {
+        species();
+    }
 }
 
 function species() {
-    let rnd = int(random(2));
-    switch (rnd) {
-        case 0:
-            line(x, y, x + spacing, y + spacing);
-            break;
-        case 1:
-            line(x, y + spacing, x + spacing, y);
-            break;
-    }
+    // let rnd = int(random(2));
+    // switch (rnd) {
+    //     case 0:
+    //         line(x, y, x + spacing, y + spacing);
+    //         break;
+    //     case 1:
+    //         line(x, y + spacing, x + spacing, y);
+    //         break;
+    // }
 
-    x = x + spacing;
+    let rndFloat = random(1);
+    if (rndFloat > 0.5)
+        line(x, y, x + spacing, y + spacing)
+    else
+        line(x, y + spacing, x + spacing, y)
+
+    x += spacing;
     if (x > width) {
         x = 0;
-        y = y + spacing;
+        y += spacing;
     }
 }
