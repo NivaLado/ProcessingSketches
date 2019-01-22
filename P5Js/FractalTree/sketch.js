@@ -2,11 +2,11 @@ let tree = [];
 let counter = 0;
 let frameR = 60;
 let data = [];
-let specie = 2;
+let specie = 1;
 let divider = 10;
 let trigger = false;
 let maxGen = 0;
-let delay = 10;
+let delay = 5;
 let notBorn = true;
 let ready = false;
 let root;
@@ -27,7 +27,7 @@ function setup() {
 
 function draw() {
 	if (notBorn) {
-		if (maxGen <= 5000) {
+		if (maxGen <= 15) {
 			for (var i = tree.length - 1; i >= 0; i--) {
 				if (!tree[i].finished) {
 					tree.push(tree[i].r());
@@ -36,6 +36,7 @@ function draw() {
 				tree[i].finished = true;
 				maxGen++;
 			}
+			tree.sort(compare);
 		}
 		else
 			notBorn = false
@@ -60,6 +61,23 @@ function draw() {
 		// }
 	}
 }
+
+function compare(a, b) {
+	if (a.begin.y > b.begin.y)
+		return -1;
+	if (a.begin.y < b.begin.y)
+		return 1;
+	return 0;
+}
+
+// function compare2(a, b) {
+// 	if ()
+// 		return -1;
+// 	if (a.begin.y < b.begin.y)
+// 		return 1;
+// 	return 0;
+// }
+
 
 function mousePressed() {
 	trigger = !trigger;
