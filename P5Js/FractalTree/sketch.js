@@ -3,36 +3,34 @@ let frameR = 60;
 
 let specieData = [];
 let angleData = [];
-let specie = 1;
-let angle = 3;
+let specie = 0;
+let angle = 0;
 
 let divider = 10;
 let trigger = false;
-let maxGen = 8;
-let delay = 10;
+let maxGen = 7;
+let delay = 1;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(75);
-    strokeWeight(3);
-    stroke(150, 210, 90);
+    strokeWeight(10);
+    //stroke(255);
+    stroke(120, 210, 90);
     frameRate(frameR);
     createSpecieData();
     createAngleData();
-    let rootStart = new createVector(width / 2, height);
-    let rootEnd = new createVector(width / 2, height - 200); //-500 (Pi/2)
-    new Branch(rootStart, rootEnd, tree, 0); //START
-    line(rootStart.x, rootStart.y, rootEnd.x, rootEnd.y);
 }
 
 function draw() {
-    if (trigger) {
-        iterate();
-    }
+
 }
 
-function mousePressed() {
+async function mousePressed() {
     trigger = !trigger;
+    createTree(mouseX, mouseY);
+    await iterate();
+    tree = [];
 }
 
 function createSpecieData() {
@@ -65,4 +63,19 @@ async function iterate() {
         }
         await w8(delay);
     }
+}
+
+function createTree(x, y){
+    let rootStart = new createVector(x, height);
+    let rootEnd = new createVector(x, y); //-500 (Pi/2)
+    let Tree = new Branch(rootStart, rootEnd, tree, 0); //START
+    tempRandom();
+    Tree.look();
+    Tree.genezis();
+}
+
+function tempRandom() {
+    specie = int(random(specieData.length));
+    angle = int(random(angleData.length));
+    console.log(specie);
 }

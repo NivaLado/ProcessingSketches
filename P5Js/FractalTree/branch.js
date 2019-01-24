@@ -17,11 +17,7 @@ class Branch {
     }
 
     show() {
-        if (this.generation == maxGen + 1)
-            stroke(231, 76, 60);
-        else
-            stroke(150, 210, 90);
-
+        this.look();
         line(this.begin.x, this.begin.y, this.end.x, this.end.y);
         this.finished = true;
     }
@@ -40,50 +36,29 @@ class Branch {
             let newEndL = p5.Vector.add(this.end, this.dirL);
             let newEndR = p5.Vector.add(this.end, this.dirR);
             let lBranch; let rBranch;
-            // if (this.generation > 8) {
-            //     if (random(1) > 0.5) {
-            //         lBranch = new Branch(this.end, newEndL, this.branches, this.generation);
-            //         this.branches.push(lBranch);
-            //     }
-            //     else {
-            //         rBranch = new Branch(this.end, newEndR, this.branches, this.generation);
-            //         this.branches.push(rBranch);
-            //     }
-            // } else {
+
             rBranch = new Branch(this.end, newEndR, this.branches, this.generation);
             lBranch = new Branch(this.end, newEndL, this.branches, this.generation);
             this.branches.push(rBranch);
             this.branches.push(lBranch);
-            //}
-            //this.divideBranch();
-            //this.show();
         }
     }
 
-    // divideBranch() {
-    //     let accumL = this.end.copy();
-    //     let accumR = this.end.copy();
-    //     let stepL = p5.Vector.div(this.dirL, divider);
-    //     let stepR = p5.Vector.div(this.dirR, divider);
+    genezis() {
+        line(this.begin.x, this.begin.y, this.end.x, this.end.y);
+    }
 
-    //     this.pathHistoryR.push(this.end);
-    //     this.pathHistoryL.push(this.end);
-
-    //     for (let i = 0; i < divider; i++) {
-    //         this.pathHistoryL.push(p5.Vector.add(accumL, stepL));
-    //         this.pathHistoryR.push(p5.Vector.add(accumR, stepR));
-    //         accumL = p5.Vector.add(accumL, stepL);
-    //         accumR = p5.Vector.add(accumR, stepR);
-    //     }
-    //     //this._debugDivision();
-    // }
-
-    // _debugDivision() {
-    //     stroke(255, 0, 0);
-    //     strokeWeight(7);
-    //     for (let i = 0; i < this.pathHistoryR.length; i++) {
-    //         point(this.pathHistoryR[i].x, this.pathHistoryR[i].y);
-    //     }
-    //     strokeWeight(3);
-    // }
+    look() {
+        if (this.generation == maxGen + 1)
+        {
+            stroke(231, 76, 60);
+            strokeWeight(9 - map(this.generation, 0, maxGen, 0, 5));
+        }
+        else
+        {
+            //stroke(255 - map(this.generation, 0, maxGen, 0, 255));
+            stroke(150, 210, 90);
+            strokeWeight(9 - map(this.generation, 0, maxGen, 0, 5));
+        }
+    }
 }
