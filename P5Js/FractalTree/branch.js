@@ -49,16 +49,16 @@ class Branch {
     }
 
     look() {
-        if (this.generation == maxGen + 1)
-        {
+        if (this.generation == maxGen + 1) {
             stroke(231, 76, 60);
-            strokeWeight(9 - map(this.generation, 0, maxGen, 0, 5));
+            strokeWeight(9 - map(this.generation + mouseY, 0, maxGen + height, 0, 8));
         }
-        else
-        {
-            //stroke(255 - map(this.generation, 0, maxGen, 0, 255));
+        else {
+            //stroke(255 - map(this.generation, 0, maxGen, 0, 150));
             stroke(150, 210, 90);
             strokeWeight(9 - map(this.generation, 0, maxGen, 0, 5));
         }
     }
 }
+
+//Make width of root depend on it height no only generation
