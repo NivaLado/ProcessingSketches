@@ -66,11 +66,7 @@ async function iterate() {
     }
 }
 
-<<<<<<< HEAD
-function createTree(x, y){
-=======
 function createTree(x, y) {
->>>>>>> be8ec3e5601b6b5e66d24ab32b2f64f69253deda
     tempRandom();
     let rootStart = new createVector(x, height);
     let rootEnd = new createVector(x, y); //-500 (Pi/2)
@@ -82,8 +78,4 @@ function createTree(x, y) {
 function tempRandom() {
     specie = int(random(specieData.length));
     angle = int(random(angleData.length));
-<<<<<<< HEAD
-=======
-    //console.log(specie);
->>>>>>> be8ec3e5601b6b5e66d24ab32b2f64f69253deda
 }
