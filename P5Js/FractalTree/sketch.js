@@ -9,7 +9,7 @@ let angle = 0;
 let divider = 10;
 let trigger = false;
 let maxGen = 7;
-let delay = 1;
+let delay = 100;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -66,10 +66,10 @@ async function iterate() {
 }
 
 function createTree(x, y){
+    tempRandom();
     let rootStart = new createVector(x, height);
     let rootEnd = new createVector(x, y); //-500 (Pi/2)
     let Tree = new Branch(rootStart, rootEnd, tree, 0); //START
-    tempRandom();
     Tree.look();
     Tree.genezis();
 }
@@ -77,5 +77,4 @@ function createTree(x, y){
 function tempRandom() {
     specie = int(random(specieData.length));
     angle = int(random(angleData.length));
-    console.log(specie);
 }
