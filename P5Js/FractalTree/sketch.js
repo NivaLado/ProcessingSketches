@@ -37,8 +37,8 @@ function createSpecieData() {
     specieData[0] = createVector(0.5, 0.5);
     specieData[1] = createVector(0.75, 0.75);
     specieData[2] = createVector(0.25, 0.75);
-    specieData[3] = createVector(0.75, 0.75);
-    specieData[4] = createVector(1, 1);
+    specieData[3] = createVector(0.75, 0.25);
+    specieData[4] = createVector(0.4, 0.8);
 }
 
 function createAngleData() {
@@ -46,6 +46,7 @@ function createAngleData() {
     angleData[1] = createVector(-PI / 4, PI / 4);
     angleData[2] = createVector(-PI / 6, PI / 6);
     angleData[3] = createVector(-PI / 8, PI / 8);
+    angleData[4] = createVector(-PI / 16, PI / 16);
 }
 
 function w8(time) {
@@ -65,7 +66,11 @@ async function iterate() {
     }
 }
 
+<<<<<<< HEAD
 function createTree(x, y){
+=======
+function createTree(x, y) {
+>>>>>>> be8ec3e5601b6b5e66d24ab32b2f64f69253deda
     tempRandom();
     let rootStart = new createVector(x, height);
     let rootEnd = new createVector(x, y); //-500 (Pi/2)
@@ -77,4 +82,8 @@ function createTree(x, y){
 function tempRandom() {
     specie = int(random(specieData.length));
     angle = int(random(angleData.length));
+<<<<<<< HEAD
+=======
+    //console.log(specie);
+>>>>>>> be8ec3e5601b6b5e66d24ab32b2f64f69253deda
 }
