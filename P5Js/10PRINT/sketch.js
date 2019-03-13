@@ -1,6 +1,7 @@
 let x = 0;
 let y = 0;
 let spacing = 20;
+let speciesPerFrame = 1;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -10,7 +11,7 @@ function setup() {
 }
 
 function draw() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < speciesPerFrame; i++) {
         species();
     }
 }
@@ -27,7 +28,7 @@ function species() {
     // }
 
     let rndFloat = random(1);
-    if (rndFloat > 0.5)
+    if (rndFloat > 0.75)
         line(x, y, x + spacing, y + spacing)
     else
         line(x, y + spacing, x + spacing, y)

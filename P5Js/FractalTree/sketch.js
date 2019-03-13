@@ -9,7 +9,7 @@ let angle = 0;
 let divider = 10;
 let trigger = false;
 let maxGen = 7;
-let delay = 100;
+let delay = 10;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
