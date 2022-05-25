@@ -13,8 +13,7 @@ char[] ascii;
  
 void setup() {
   orientation(LANDSCAPE);
-  imageMode(CENTER);
-  cam = new KetaiCamera(this, displayWidth, displayHeight, 10);
+  cam = new KetaiCamera(this, displayWidth, displayHeight, 30);
   cam.manualSettings();
 
   background(255);
@@ -22,7 +21,7 @@ void setup() {
   noStroke();
  
   ascii = new char[256];
-  String letters = "MN@#$o;:,. ";
+  String letters = "WMONLkrti";
   for (int i = 0; i < 256; i++) {
     int index = int(map(i, 0, 256, 0, letters.length()));
     ascii[i] = letters.charAt(index);
